@@ -14,7 +14,7 @@ public class prueba_netflix extends TestNGCreation {
 	ElementFactory element = new ElementFactory();
 	Helpers helper = new Helpers();
 	
-	@Test (enabled = false)
+	@Test ()
 	@Parameters({"title"})
 	public void validarTituloTest(String netFlixTitle) {	
 		url = "https://www.netflix.com/";
@@ -23,7 +23,7 @@ public class prueba_netflix extends TestNGCreation {
 		Assert.assertTrue(actualTitle.contains(netFlixTitle), "The Netflix title is as expected!");
 	}
 	
-	@Test(enabled = false)
+	@Test(dependsOnMethods = {"validarTituloTest"})
 	@Parameters({"title", "tagName"})
 	public void iniciarSesionPageTest(String netFlixTitle, String tagName) {
 		url = "https://www.netflix.com/";
@@ -44,7 +44,7 @@ public class prueba_netflix extends TestNGCreation {
 		Assert.assertTrue(driver.findElement(By.xpath(element.facebookSignIn)).isDisplayed(), "The 'Login with Facebook' text is displayed as expected!");
 	}
 	
-	@Test(enabled = true)
+	@Test(dependsOnMethods = {"validarTituloTest"})
 	@Parameters({"netflixEmailWrong", "netflixEmailWell", "netflixPass", "netflixEmailErrMsg", "netflixPasswErrMsg"})
 	public void loginToNetflixErrorTest (String netflixEmailWrong, String netflixEmailWell,String netFlixPass, String netflixEmailErrMsg, String netflixPasswErrMsg) {
 		url = "https://www.netflix.com/";
@@ -61,6 +61,7 @@ public class prueba_netflix extends TestNGCreation {
 		String netfEmailErrMsg = MainPage.loginEmailErrMsg(driver, url, driver.findElement(By.xpath(element.netFlixEmailErrMsglocator)));
 		Assert.assertTrue(netfEmailErrMsg.contains(netflixEmailWrong), "The error message '"+ netflixEmailErrMsg +"' is displayed as expected!");
 			
+		helper.sleepSeconds(2);
 		driver.findElement(By.id(element.netflixEmail)).clear();
 		driver.findElement(By.id(element.netflixEmail)).sendKeys(netflixEmailWell);
 		driver.findElement(By.xpath(element.netflixSignInBtn)).click();

@@ -24,6 +24,6 @@ public class TestNGCreation {
 
 	@AfterMethod
 	public void endTest() {
-//		driver.close();
+		driver.close();
 	}
 }
