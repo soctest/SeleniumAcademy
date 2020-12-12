@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Ejercicio Examen">
+  <test thread-count="5" name="Ejercicio Examen">
+ 	<parameter name="title" value="Netflix Argentina - Watch TV Shows Online, Watch Movies Online"></parameter>
+ 	<parameter name="tagName" value="h1"></parameter>
+ 	<parameter name="netflixEmailWrong" value="XXX"></parameter>
+ 	<parameter name="netflixEmailWell" value="test@test.com"></parameter>
+ 	<parameter name="netflixPass" value="holamundo"></parameter>
+ 	<parameter name="netflixEmailErrMsg" value="Please enter a valid email."></parameter>
+ 	<parameter name="netflixPasswErrMsg" value="Incorrect password."></parameter>
+    <classes>
+      <class name="exaTest.prueba_netflix"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
