@@ -4,13 +4,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
+
 import exaPage.prueba_netflixPage;
 
 public class TestNGCreation {
-
-	public static String url = "";
+	private static String URL = "https://www.netflix.com/";
 	public static WebDriver driver;
 	BrowserFactory br = new BrowserFactory();
+	public SoftAssert s_assert = new SoftAssert();
 	
 	public prueba_netflixPage MainPage;
 	private GetProperties properties = new GetProperties();
@@ -18,7 +20,7 @@ public class TestNGCreation {
 	
 	@BeforeMethod
 	public void setup() throws InterruptedException {
-		driver = br.startBrowser(chromeDriverUrl);
+		driver = br.startBrowser(chromeDriverUrl, URL);
 		MainPage = PageFactory.initElements(driver, prueba_netflixPage.class);
 	}
 

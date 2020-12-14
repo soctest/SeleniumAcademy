@@ -8,12 +8,13 @@ public class BrowserFactory {
 
 	public static WebDriver driver;
 
-	public WebDriver startBrowser(String chromeDriverUrl) {
+	public WebDriver startBrowser(String chromeDriverUrl, String url) {
 			
 		System.setProperty("webdriver.chrome.driver", chromeDriverUrl);
 		driver = new ChromeDriver();
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
+		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		return driver;
