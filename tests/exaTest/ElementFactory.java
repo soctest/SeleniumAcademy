@@ -13,5 +13,5 @@ public class ElementFactory {
 	public String netflixSignInBtn = "//button[@class='btn login-button btn-submit btn-small']";
 	public String netFlixEmailErrMsglocator = "//div[@class='inputError']";
 	public String netFlixPasswErrMsglocator = "//div[@class='ui-message-contents']";
-//	public String netFlixPasswErrMsglocator = "//div[@class='inputError']";
+	public String signUpNow = "//div[@class='login-signup-now']/a";
 }

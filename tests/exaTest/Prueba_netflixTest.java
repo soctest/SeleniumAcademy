@@ -3,6 +3,7 @@ package exaTest;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.Utility.Helpers;
@@ -20,7 +21,7 @@ public class Prueba_netflixTest extends TestNGCreation {
 	
 	@Test ()
 	@Parameters({"title"})
-	public void validarTituloTest(String netFlixTitle) {	
+	public void Tst1_validarTituloTest(String netFlixTitle) {	
 		
 		try {
 			String actualTitle = MainPage.pageTitle(driver);
@@ -33,15 +34,15 @@ public class Prueba_netflixTest extends TestNGCreation {
 
 	}
 	
-	@Test(dependsOnMethods = {"validarTituloTest"})
+	@Test(dependsOnMethods = {"Tst1_validarTituloTest"})
 	@Parameters({"title", "tagName"})
-	public void iniciarSesionPageTest(String netFlixTitle, String tagName) {
+	public void Tst2_iniciarSesionPageTest(String netFlixTitle, String tagName) {
 		
 		try {
 			driver.findElement(By.xpath(element.iniciarSesion)).click();
 			String actualTitle = MainPage.pageTitle(driver);
 			s_assert.assertFalse((actualTitle.contains(netFlixTitle)));
-			System.out.println("The Netflix title has changed");
+			System.out.println("The Netflix title has changed to "+ actualTitle);
 		} catch (Exception e) {
 			System.out.println("The Netflix title has not changed. Element does not exist!"+ e.getMessage());
 		}
@@ -68,9 +69,9 @@ public class Prueba_netflixTest extends TestNGCreation {
 		System.out.println("\n");
 	}
 	
-	@Test(dependsOnMethods = {"iniciarSesionPageTest"})
+	@Test(dependsOnMethods = {"Tst2_iniciarSesionPageTest"})
 	@Parameters({"netflixEmailWrong", "netflixEmailWell", "netflixPass", "netflixEmailErrMsg", "netflixPasswErrMsg"})
-	public void loginToNetflixErrorTest (String netflixEmailWrong, String netflixEmailWell, String netFlixPass, String netflixEmailErrMsg, String netflixPasswErrMsg) {
+	public void Tst3_loginToNetflixErrorTest (String netflixEmailWrong, String netflixEmailWell, String netFlixPass, String netflixEmailErrMsg, String netflixPasswErrMsg) {
 		
 		try {
 			driver.findElement(By.xpath(element.iniciarSesion)).click();
@@ -100,4 +101,19 @@ public class Prueba_netflixTest extends TestNGCreation {
 		System.out.println("\n");
 	}
 	
+	@Test (dataProvider = "emails", dataProviderClass = DataGenerator.class)
+	public void Tst4_dataProviderEmailTest (String emailTest) {
+		try {
+			driver.findElement(By.xpath(element.iniciarSesion)).click();
+			driver.findElement(By.xpath(element.netflixEmail)).sendKeys(emailTest);
+			driver.findElement(By.xpath(element.signUpNow)).click();
+			helper.sleepSeconds(2);
+			System.out.println("Emails has been filled "+ emailTest +" succcessfully");
+		} catch (Exception e) {
+			System.out.println("Hubo un error "+ e.getMessage());
+		}
+		
+		System.out.println("\n");
+	}
+
 }

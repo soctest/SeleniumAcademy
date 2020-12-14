@@ -11,8 +11,8 @@
  	<parameter name="netflixPasswErrMsg" value="Incorrect password."></parameter>
  	<parameter name="iniciaSesion" value="Incorrect password."></parameter>
     <classes>
-      <!-- <class name="exaTest.prueba_netflix"/> -->
-      <class name="exaTest.Prueba_netflixFactory"/>
+       <!-- <class name="exaTest.Prueba_netflixTest"/> --> 
+       <class name="exaTest.Prueba_netflixFactory"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

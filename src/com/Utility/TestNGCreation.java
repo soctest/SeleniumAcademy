@@ -10,6 +10,7 @@ import exaPage.prueba_netflixPage;
 
 public class TestNGCreation {
 	private static String URL = "https://www.netflix.com/";
+//	private static String URL = "https://www.salesforce.com/form/signup/elf-v2-login/?d=70130000000Enus";
 	public static WebDriver driver;
 	BrowserFactory br = new BrowserFactory();
 	public SoftAssert s_assert = new SoftAssert();
