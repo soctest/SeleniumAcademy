@@ -21,7 +21,7 @@ public class Prueba_netflixTest extends TestNGCreation {
 	
 	@Test (dependsOnMethods = {"dataProviderEmailTest"})
 	@Parameters({"title"})
-	public void Tst1_validarTituloTest(String netFlixTitle) {	
+	public void validarTituloTest(String netFlixTitle) {
 		
 		try {
 			String actualTitle = MainPage.pageTitle(driver);
@@ -34,9 +34,9 @@ public class Prueba_netflixTest extends TestNGCreation {
 
 	}
 	
-	@Test(dependsOnMethods = {"Tst1_validarTituloTest"})
+	@Test(dependsOnMethods = {"validarTituloTest"})
 	@Parameters({"title", "tagName"})
-	public void Tst2_iniciarSesionPageTest(String netFlixTitle, String tagName) {
+	public void iniciarSesionPageTest(String netFlixTitle, String tagName) {
 		
 		try {
 			driver.findElement(By.xpath(element.iniciarSesion)).click();
@@ -69,9 +69,9 @@ public class Prueba_netflixTest extends TestNGCreation {
 		System.out.println("\n");
 	}
 	
-	@Test(dependsOnMethods = {"Tst2_iniciarSesionPageTest"})
+	@Test(dependsOnMethods = {"iniciarSesionPageTest"})
 	@Parameters({"netflixEmailWrong", "netflixEmailWell", "netflixPass", "netflixEmailErrMsg", "netflixPasswErrMsg"})
-	public void Tst3_loginToNetflixErrorTest (String netflixEmailWrong, String netflixEmailWell, String netFlixPass, String netflixEmailErrMsg, String netflixPasswErrMsg) {
+	public void loginToNetflixErrorTest (String netflixEmailWrong, String netflixEmailWell, String netFlixPass, String netflixEmailErrMsg, String netflixPasswErrMsg) {
 		
 		try {
 			driver.findElement(By.xpath(element.iniciarSesion)).click();
