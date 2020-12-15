@@ -19,7 +19,7 @@ public class Prueba_netflixTest extends TestNGCreation {
 		this.email = emailTst;
 	}
 	
-	@Test ()
+	@Test (dependsOnMethods = {"dataProviderEmailTest"})
 	@Parameters({"title"})
 	public void Tst1_validarTituloTest(String netFlixTitle) {	
 		
@@ -102,7 +102,7 @@ public class Prueba_netflixTest extends TestNGCreation {
 	}
 	
 	@Test (dataProvider = "emails", dataProviderClass = DataGenerator.class)
-	public void Tst4_dataProviderEmailTest (String emailTest) {
+	public void dataProviderEmailTest (String emailTest) {
 		try {
 			driver.findElement(By.xpath(element.iniciarSesion)).click();
 			driver.findElement(By.xpath(element.netflixEmail)).sendKeys(emailTest);
