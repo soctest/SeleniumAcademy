@@ -6,8 +6,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 
-import exaPage.prueba_netflixPage;
-
 public class TestNGCreation {
 	private static String URL = "https://www.netflix.com/";
 //	private static String URL = "https://www.salesforce.com/form/signup/elf-v2-login/?d=70130000000Enus";
