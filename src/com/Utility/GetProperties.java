@@ -1,4 +1,4 @@
-package com.Utilities;
+package com.Utility;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,7 +10,7 @@ public class GetProperties {
 	
 	public GetProperties() {
 		try {
-			File src = new File ("./configuration/config.properties");
+			File src = new File ("./Configuration/config.properties");
 			FileInputStream fis = new FileInputStream(src);
 			properties.load(fis);
 		} catch (Exception e) {
